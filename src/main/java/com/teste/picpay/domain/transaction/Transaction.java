@@ -2,16 +2,15 @@ package com.teste.picpay.domain.transaction;
 
 import com.teste.picpay.domain.user.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Entity(name = "transactions")
 @Table(name = "transactions")
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode(of="id")
@@ -27,7 +26,7 @@ public class Transaction {
     @ManyToOne
     @JoinColumn(name = "receiver_id")
     private User Receiver;
-
+    private LocalDate timestamp;
 
 
 }

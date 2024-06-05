@@ -1,16 +1,15 @@
 package com.teste.picpay.domain.user;
 
+import com.teste.picpay.dtos.UserDTO;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
 @Entity(name = "users")
 @Table(name = "users")
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode(of="id")
@@ -29,6 +28,17 @@ public class User {
     private BigDecimal balance;
     @Enumerated(EnumType.STRING)
     private UserType userType;
+
+    public User(UserDTO userDTO) {
+        this.balance = userDTO.balance();
+        this.document= userDTO.document();
+        this.firstName = userDTO.firstName();
+        this.lastName = userDTO.lastName();
+        this.email = userDTO.email();
+        this.password = userDTO.password();
+        this.userType = userDTO.userType();
+    }
+
 
 
 }
